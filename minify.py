@@ -1,6 +1,6 @@
 import re
 
-#remove single line comments
+# remove single line comments
 def single_comments(text):
 	return re.sub(r'//.*', '', text)
 
@@ -12,4 +12,4 @@ def multi_comments(text):
 def parser(text):
 	text = single_comments(text)
 	text = multi_comments(text)
-	return text
+	return ' '.join(text.split())
