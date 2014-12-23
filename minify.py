@@ -4,19 +4,12 @@ import re
 def single_comments(text):
 	return re.sub(r'//.*', '', text)
 
+# removes multi-line comments
 def multi_comments(text):
 	return re.sub(r'(\/\*)(.*)(\*\/)', '', text.replace('\n', ''))
-def remove_space(text):
-	return "".join(text.split())
 
-
-f = open('test.js')
-text = reduce(lambda a,x: a+x, f)
-
+# parser
 def parser(text):
 	text = single_comments(text)
 	text = multi_comments(text)
-	text = remove_space(text)
 	return text
-
-print [parser(text)]
